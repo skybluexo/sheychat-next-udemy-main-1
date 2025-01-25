@@ -24,7 +24,7 @@ function NewChatModal({
   );
   const dispatch = useDispatch();
 
-  const { chats }: ChatState = useSelector((state: any) => state.chat); //testnow get the chats from DB
+  const { chats }: ChatState = useSelector((state: any) => state.chat); // get the chats from DB
 
   const getUsers = async () => {
     try {
@@ -34,9 +34,9 @@ function NewChatModal({
       console.log(response);
       setUsers(response);
 
-      // const response2 = await GetAllChats(currentUserData?._id!); //testnow
-      // if (response2.error) throw new Error(response2.error);
-      // dispatch(SetChats(response2));
+      const response2 = await GetAllChats(currentUserData?._id!); //testnow
+      if (response2.error) throw new Error(response2.error);
+      dispatch(SetChats(response2));
     } catch (error: any) {
       message.error(error.message);
     } finally {
